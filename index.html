@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarMatch - Find Your Perfect Car</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #f9f9f9;
+            --dark-color: #333;
+            --light-color: #fff;
+            --accent-color: #4ecdc4;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-image {
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .how-it-works {
+            margin-bottom: 3rem;
+        }
+        
+        .how-it-works h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            background-color: var(--light-color);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-10px);
+        }
+        
+        .step-number {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .step h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .features {
+            margin-bottom: 3rem;
+        }
+        
+        .features h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        
+        .feature-cards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            flex: 1;
+            min-width: 250px;
+            background-color: var(--light-color);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .testimonials {
+            margin-bottom: 3rem;
+        }
+        
+        .testimonials h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        
+        .testimonial-cards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--light-color);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+        }
+        
+        .cta {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 3rem 1rem;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+        }
+        
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta .btn {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            font-weight: bold;
+        }
+        
+        .cta .btn:hover {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--light-color);
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+        
+        .social-icons {
+            margin-bottom: 1rem;
+        }
+        
+        .social-icons a {
+            color: var(--light-color);
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+        }
+        
+        .car-image-container {
+            width: 100%;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .car-image {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .step, .feature-card, .testimonial-card {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CarMatch</h1>
+        <p>Find your perfect car in just 3 simple steps</p>
+    </header>
+    
+    <main>
+        <section class="container hero">
+            <h1>Discover Your Perfect Car Match</h1>
+            <p>Our personalized recommendation system helps you find the ideal car based on your unique preferences, lifestyle, and budget.</p>
+            <img src="Image2.jpg" alt="Car lineup selection" class="hero-image">
+            <a href="#get-started" class="btn">Find My Perfect Car</a>
+        </section>
+        
+        <section class="container how-it-works" id="get-started">
+            <h2>How It Works</h2>
+            <div class="car-image-container">
+                <img src="Image1.jpg" alt="Car consultation with expert" class="car-image">
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Tell Us Your Preferences</h3>
+                    <p>Complete our quick survey about your driving habits, budget, required features, and style preferences.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Browse Matching Cars</h3>
+                    <p>We'll show you all cars that meet your requirements with detailed specifications and comparisons.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Get Your Top Recommendation</h3>
+                    <p>Based on your inputs, we'll highlight the best car that perfectly matches your unique needs.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="container features">
+            <h2>Why Choose CarMatch</h2>
+            <div class="car-image-container">
+                <img src="Image3.jpg" alt="Elegant blue sedan" class="car-image">
+            </div>
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Smart Matching</h3>
+                    <p>Our algorithm analyzes thousands of cars to find your perfect match based on your specific requirements.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Unbiased Recommendations</h3>
+                    <p>We provide objective suggestions without favoring specific brands or dealers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Comprehensive Data</h3>
+                    <p>Access detailed specifications, performance metrics, and real user reviews for informed decision-making.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="container testimonials">
+            <h2>What Our Users Say</h2>
+            <div class="testimonial-cards">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I was overwhelmed with all the car options out there. CarMatch simplified everything and helped me find exactly what I needed within my budget."</p>
+                    <p class="testimonial-author">- Sarah J.</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The recommendation was spot on! I would never have considered this model on my own, but it perfectly fits my lifestyle and driving needs."</p>
+                    <p class="testimonial-author">- Michael T.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="container">
+            <div class="cta">
+                <h2>Ready to Find Your Perfect Car?</h2>
+                <p>It only takes a few minutes to complete our survey and discover cars that are perfectly suited to your needs and preferences.</p>
+                <a href="#survey" class="btn" id="start-survey-btn">Start My Car Survey</a>
+            </div>
+        </section>
+        
+        <!-- Survey Modal (Hidden by default) -->
+        <div id="survey-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); z-index: 1000; overflow: auto;">
+            <div style="background-color: white; margin: 10% auto; padding: 20px; width: 80%; max-width: 600px; border-radius: 10px;">
+                <span id="close-survey" style="float: right; cursor: pointer; font-size: 1.5rem;">&times;</span>
+                <h2 style="margin-bottom: 20px;">Car Preference Survey</h2>
+                
+                <form id="car-preference-form">
+                    <div style="margin-bottom: 20px;">
+                        <label for="budget" style="display: block; margin-bottom: 5px; font-weight: bold;">Budget Range:</label>
+                        <select id="budget" name="budget" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
+                            <option value="">Select your budget</option>
+                            <option value="under-15000">Under $15,000</option>
+                            <option value="15000-25000">$15,000 - $25,000</option>
+                            <option value="25000-40000">$25,000 - $40,000</option>
+                            <option value="40000-60000">$40,000 - $60,000</option>
+                            <option value="above-60000">Above $60,000</option>
+                        </select>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: bold;">Vehicle Type:</label>
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                            <label style="margin-right: 15px;">
+                                <input type="checkbox" name="vehicle_type" value="sedan"> Sedan
+                            </label>
+                            <label style="margin-right: 15px;">
+                                <input type="checkbox" name="vehicle_type" value="suv"> SUV
+                            </label>
+                            <label style="margin-right: 15px;">
+                                <input type="checkbox" name="vehicle_type" value="truck"> Truck
+                            </label>
+                            <label style="margin-right: 15px;">
+                                <input type="checkbox" name="vehicle_type" value="hatchback"> Hatchback
+                            </label>
+                            <label style="margin-right: 15px;">
+                                <input type="checkbox" name="vehicle_type" value="convertible"> Convertible
+                            </label>
+                            <label>
+                                <input type="checkbox" name="vehicle_type" value="minivan"> Minivan
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label for="passengers" style="display: block; margin-bottom: 5px; font-weight: bold;">Number of Passengers:</label>
+                        <select id="passengers" name="passengers" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
+                            <option value="">Select passenger capacity</option>
+                            <option value="2">2 passengers</option>
+                            <option value="4">4-5 passengers</option>
+                            <option value="7">6-7 passengers</option>
+                            <option value="8">8+ passengers</option>
+                        </select>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label for="fuel" style="display: block; margin-bottom: 5px; font-weight: bold;">Fuel Type:</label>
+                        <select id="fuel" name="fuel" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
+                            <option value="">Select fuel type</option>
+                            <option value="gasoline">Gasoline</option>
+                            <option value="diesel">Diesel</option>
+                            <option value="hybrid">Hybrid</option>
+                            <option value="electric">Electric</option>
+                            <option value="plug-in-hybrid">Plug-in Hybrid</option>
+                        </select>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: bold;">Important Features:</label>
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                            <label style="margin-right: 15px;">
+                                <input type="checkbox" name="features" value="navigation"> Navigation
+                            </label>
+                            <label style="margin-right: 15px;">
+                                <input type="checkbox" name="features" value="bluetooth"> Bluetooth
+                            </label>
+                            <label style="margin-right: 15px;">
+                                <input type="checkbox" name="features" value="backup-camera"> Backup Camera
+                            </label>
+                            <label style="margin-right: 15px;">
+                                <input type="checkbox" name="features" value="leather"> Leather Seats
+                            </label>
+                            <label style="margin-right: 15px;">
+                                <input type="checkbox" name="features" value="sunroof"> Sunroof
+                            </label>
+                            <label>
+                                <input type="checkbox" name="features" value="safety"> Advanced Safety Features
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label for="driving" style="display: block; margin-bottom: 5px; font-weight: bold;">Primary Driving Purpose:</label>
+                        <select id="driving" name="driving" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
+                            <option value="">Select primary use</option>
+                            <option value="commuting">Daily Commuting</option>
+                            <option value="family">Family Transportation</option>
+                            <option value="offroad">Off-road/Adventure</option>
+                            <option value="towing">Towing/Hauling</option>
+                            <option value="performance">Performance/Sport Driving</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" style="background-color: var(--primary-color); color: white; border: none; border-radius: 5px; padding: 10px 20px; cursor: pointer; font-size: 1rem; width: 100%;">Submit & See My Matches</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">FAQ</a>
+        </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>&copy; 2025 CarMatch. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Show survey modal when "Start My Car Survey" button is clicked
+        document.getElementById('start-survey-btn').addEventListener('click', function() {
+            document.getElementById('survey-modal').style.display = 'block';
+        });
+        
+        // Close survey modal when close button is clicked
+        document.getElementById('close-survey').addEventListener('click', function() {
+            document.getElementById('survey-modal').style.display = 'none';
+        });
+        
+        // Handle form submission
+        document.getElementById('car-preference-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real application, you would collect the form data and redirect to results page
+            // For this example, we'll just show an alert
+            alert('Thank you for submitting your preferences! In a real application, you would now be redirected to your personalized car matches.');
+            
+            // Close the modal after submission
+            document.getElementById('survey-modal').style.display = 'none';
+        });
+        
+        // Close modal if user clicks outside of it
+        window.addEventListener('click', function(e) {
+            if (e.target == document.getElementById('survey-modal')) {
+                document.getElementById('survey-modal').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
